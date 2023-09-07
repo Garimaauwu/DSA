@@ -4,7 +4,7 @@ public:
       if(nums.size()<=1)
       return nums.size();
       int j=1; 
-      for(int i=1;i<nums.size();i++)
+      for(int i=1;i<nums.size();++i)
       {
           if(nums[i]!=nums[j-1])
           {
