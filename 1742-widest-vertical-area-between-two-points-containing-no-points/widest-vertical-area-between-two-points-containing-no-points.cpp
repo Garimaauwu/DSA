@@ -5,8 +5,8 @@ public:
         int result=0; 
         for(int i=1;i<points.size();i++)
         {
-             int w =points[i][0]-points[i-1][0];
-             result=max(result,w);
+            
+             result=max(result, points[i][0]-points[i-1][0]);
         }
         return result; 
     }
