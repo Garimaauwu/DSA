@@ -6,12 +6,17 @@ public:
       int totalone=count(s.begin(),s.end(),'1');
       int zero=0, leftone=0; 
       for(int i=0;i<=n-2;i++)
-      {  if(s[i]=='0')
-                  zero++;
+      {  if(s[i]=='1')
+       leftone++; 
+                 
                     else   
-                leftone++; 
-          result = max(result,zero+(totalone-leftone));
+                zero++;
+          result = max(result,(zero-leftone));
       }  
-      return result ; 
+      if(s[n-1]==0)
+      {
+          leftone++;
+      }
+      return result+totalone ; 
     }
 };
