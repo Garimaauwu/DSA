@@ -2,8 +2,8 @@ class Solution {
 public:
     bool isPathCrossing(string path) {
      int x=0,y=0; 
-        unordered_set<string>st;
-        st.insert("0,0");
+        set<vector<int>>st;
+        st.insert({0,0});
        
         for (char ch:path)
         {
@@ -12,10 +12,10 @@ public:
             else if (ch=='S') y--;
             else if(ch=='W') x--;
             else x++;
-            string co = to_string(x)+ ","+ to_string(y);
-            if(st.find(co)!=st.end())
+          
+            if(st.find({x,y})!=st.end())
             return true ; 
-            st.insert(co);
+            st.insert({x,y});
 
 
         }
