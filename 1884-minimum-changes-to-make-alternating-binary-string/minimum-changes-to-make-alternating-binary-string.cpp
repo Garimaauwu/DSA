@@ -7,11 +7,7 @@ public:
     {
         if(i%2==0)
         {
-if(s[i]=='0')
-{
-    count10++;
-}
-else if(s[i]=='1')
+ if(s[i]=='1')
 {
     count01++;
 }
@@ -22,13 +18,9 @@ else if(s[i]=='1')
             {
                 count01++;
             }
-            else if(s[i]=='1')
-            {
-                count10++;
-            }
         }
 
     }
-   return  min(count01,count10);
+   return  min(count01,n-count01);
     }
 };
