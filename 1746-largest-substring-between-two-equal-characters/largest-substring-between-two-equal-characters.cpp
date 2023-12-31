@@ -7,7 +7,7 @@ public:
             for(int j=i+1;j<n;j++)
             {
                 if(s[i]==s[j])
-                 res=j-i-1>res?j-i-1:res;               
+                   res = max(res,j-i-1);               
             }   
         }
     
