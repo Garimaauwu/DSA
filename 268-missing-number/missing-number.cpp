@@ -8,7 +8,7 @@ public:
         {
             sum2+=nums[i];
         }
-        int ans=sum1-sum2;
-        return ans;
+      
+        return  sum1-sum2;
     }
 };
