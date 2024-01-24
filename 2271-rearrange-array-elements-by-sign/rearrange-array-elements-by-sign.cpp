@@ -17,7 +17,6 @@ public:
             }
         }
         int n1=positive.size();
-        int n2=negative.size();
         int i=0;
         while(i<n1)
         {
