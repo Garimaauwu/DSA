@@ -1,8 +1,4 @@
-/*
-    MY YOUTUBE VIDEO ON THIS Qn : https://www.youtube.com/watch?v=3Bp3OVD1EGc
-    Company Tags                : Google, Amazon, Microsoft, Codenation, FactSet, , Atlassian, MakeMyTrip, Streamoid Technologies, Media.net, Airbnb
-    Leetcode Link               : https://leetcode.com/problems/minimum-window-substring/
-*/
+
 
 class Solution {
 public:
@@ -25,7 +21,7 @@ public:
             
             mp[ch_j]--;
             
-            while(requiredCount == 0) { //try to shrink the window
+            while(requiredCount == 0) { 
                 if(minWindow > j-i+1) {
                     minWindow = j-i+1;
                     minStart  = i;
@@ -38,7 +34,7 @@ public:
                 i++;
             }
             
-            j++; //Don't ever forget this :-)
+            j++; 
         }
         
         return minWindow == INT_MAX ? "" : s.substr(minStart, minWindow);
