@@ -1,33 +1,38 @@
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        string newstr; 
-        for(int i=0; i<s.length();i++)
-        {
-            if(s[i]>=65 && s[i]<=90)
-            {
-                newstr.push_back(s[i]+32);
-            }
-            else if(s[i]>=97 && s[i]<=122)
-            {
-                newstr.push_back(s[i]);
-            }
-            else if(s[i]>='0' && s[i]<='9')
-            {
-                newstr.push_back(s[i]);
-            }
+    bool helper(int start,int end,string& str )
+    {
+        if(start>=end)
+        { 
+             return true ;
+        
+
         }
+     
+       else if( !isalnum(str[end] ) )
+        {
+           return  helper(start,end-1,str);
+        }
+      else  if(!isalnum(str[start])  )
+        {
+           return  helper(start+1,end,str);
+        }
+      else  if(tolower(str[start])!=tolower(str[end]))
+        {
+            return false ; 
+        }
+      else 
+         return  helper(start+1,end-1,str);
+       
+    } 
     
-        int i=0, j=newstr.length()-1;
-        while(i<=j)
-        {
-            if(newstr[i]!=newstr[j])
-            {
-                return false;
-            }
-            i++;
-            j--; 
-        }
-        return true ; 
+
+
+
+    bool isPalindrome(string s) {
+       int n=s.length();
+       int start =0, end=n-1;
+    return  helper(start,end,s);
+      
     }
 };
