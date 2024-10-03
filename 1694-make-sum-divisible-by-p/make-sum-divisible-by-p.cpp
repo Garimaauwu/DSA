@@ -14,18 +14,19 @@ public:
             return 0;
         }
 
-        mp[0] = -1;
-        for (int i = 0; i < n; i++) {
-            prefixsum = (prefixsum + nums[i]) % p;
+           for (int i = 0; i < n; i++) {
+                prefixsum = (prefixsum + nums[i]) % p;
+                if (prefixsum == rem) {
+                    mini = min(mini, i + 1);
+                }
+                int part = (prefixsum - rem + p) % p;
 
-            int part = (prefixsum - rem + p) % p;
+                if (mp.find(part) != mp.end()) {
+                    mini = min(mini, i - mp[part]);
+                }
 
-            if (mp.find(part) != mp.end()) {
-                mini = min(mini, i - mp[part]);
+                mp[prefixsum] = i;
             }
-
-            mp[prefixsum] = i;
-        }
 
         if (mini == n) {
             return -1;
