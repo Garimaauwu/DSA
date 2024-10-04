@@ -1,22 +1,31 @@
 class Solution {
 public:
     long long dividePlayers(vector<int>& skill) {
-        sort(begin(skill),end(skill));
-        int i=0,j=skill.size()-1;
-        int sum=skill[i]+skill[j];
-        long long totalskill=0,chemistry=0;
-        while(i<j)
+        vector<int> freq(1001, 0);
+        int n = skill.size();
+        long long sum = 0;
+        for (auto nums : skill) {
+            sum += nums;
+            freq[nums]++;
+        }
+         int teams = n / 2;
+        if(sum%teams!=0)
         {
-            totalskill=skill[i]+skill[j];
-            if(totalskill != sum)
-            {
+            return -1;
+        }
+       
+        long long totalsum = sum / teams;
+        long long chemistry = 0, currskill = 0;
+        long long remskill = 0;
+        for (int i = 0; i < skill.size(); i++) {
+            currskill = skill[i];
+            remskill = totalsum - currskill;
+            if (freq[remskill] <= 0) {
                 return -1;
             }
-            chemistry+=skill[i]*skill[j];
-            i++;
-            j--;
+            chemistry += currskill * remskill;
+            freq[remskill] -= 1;
         }
-        return chemistry;
-
+        return chemistry/2;
     }
 };
